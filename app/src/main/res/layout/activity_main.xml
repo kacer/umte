@@ -11,5 +11,10 @@
             android:layout_height="wrap_content"
             android:text="Hello World!"
             android:layout_gravity="center"/>
+    <Button
+            android:text="Open detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/openButton"
+            android:layout_gravity="center_horizontal" android:layout_marginTop="64dp"/>
 
 </FrameLayout>
