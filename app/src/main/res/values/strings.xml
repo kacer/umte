@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">UmteApp</string>
+    <string name="user_detail">User detail</string>
+    <string name="user_name">Name:</string>
+    <string name="user_lastname">Lastname:</string>
+    <string name="user_age">Age:</string>
+    <string name="user_weight">Weight:</string>
+    <string name="button_save">Save</string>
 </resources>
