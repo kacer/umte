@@ -6,7 +6,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import cz.uhk.umteapp.prefs.Prefs
+import cz.uhk.umteapp.ws.ScheduleDTO
+import cz.uhk.umteapp.ws.StagService
+import cz.uhk.umteapp.ws.stagService
 import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +29,21 @@ class MainActivity : AppCompatActivity() {
         openListButton.setOnClickListener {
             val intent = Intent(this, ListActivity::class.java)
             startActivity(intent)
+        }
+
+        wsButton.setOnClickListener {
+            val call = stagService.getHarmonogram(StagService.JSON)
+            call.enqueue(object: Callback<ScheduleDTO> {
+
+                override fun onResponse(call: Call<ScheduleDTO>, response: Response<ScheduleDTO>) {
+                    println("onResponse")
+                    Toast.makeText(this@MainActivity, response.body()?.toString(), Toast.LENGTH_LONG).show()
+                }
+
+                override fun onFailure(call: Call<ScheduleDTO>, t: Throwable) {
+                    println("onFailure")
+                }
+            })
         }
 
         val appStartMillis = Prefs.getAppStart()
