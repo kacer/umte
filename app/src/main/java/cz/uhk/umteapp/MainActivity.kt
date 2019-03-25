@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import cz.uhk.umteapp.prefs.Prefs
+import cz.uhk.umteapp.services.RoomService
 import cz.uhk.umteapp.ws.ScheduleDTO
 import cz.uhk.umteapp.ws.StagService
 import cz.uhk.umteapp.ws.stagService
@@ -44,6 +45,9 @@ class MainActivity : AppCompatActivity() {
                     println("onFailure")
                 }
             })
+
+            // service se spusti jen jednou i pokud se to zavola nekolikrat za sebou (optimalizace androidu)
+            startService(Intent(this@MainActivity, RoomService::class.java))
         }
 
         val appStartMillis = Prefs.getAppStart()
