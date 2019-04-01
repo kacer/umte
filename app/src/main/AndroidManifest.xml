@@ -3,6 +3,9 @@
           package="cz.uhk.umteapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-feature android:name="android.hardware.sensor.accelerometer"
+                  android:required="true" />
     
     <application
             android:name=".UmteApp"
@@ -23,6 +26,7 @@
         <activity android:name=".DetailActivity" />
         <activity android:name=".ListActivity" />
         <activity android:name=".UserDetailActivity" />
+        <activity android:name=".sensors.SensorActivity" />
 
         <service android:name="services.RoomService" />
     </application>
